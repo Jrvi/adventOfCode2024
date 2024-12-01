@@ -1,6 +1,6 @@
 left = []
 right = []
-distance = 0
+score = 0
 
 # splits numbers to left and right arrays
 with open("numbers.txt", encoding="utf-8") as f:
@@ -13,15 +13,16 @@ with open("numbers.txt", encoding="utf-8") as f:
         right.append(s[1])
     f.close()
 
-# Sorting
-left = sorted(left)
-right = sorted(right)
+# Sorting not needed
+# left = sorted(left)
+# right = sorted(right)
 
-# finding distance
-for i in range(0, len(left)):
-    d = int(left[i]) - int(right[i])
-    if d < 0:
-        d = d * -1
-    distance = distance + d
+# finding score
+for i in left:
+    u = 0
+    for j in right:
+        if i == j:
+            u = u + 1
+    score = score + u * int(i)
 
-print(f"total distance: {distance}")
+print(f"total score: {score}")
